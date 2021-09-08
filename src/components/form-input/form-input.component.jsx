@@ -5,7 +5,7 @@ const FormInput = ({ handleChange, label, ...otherProps }) => (
   <div className="group">
     <input
       className="form-input"
-      onchange={handleChange}
+      onChange={handleChange}
       {...otherProps}
     ></input>
     {label ? (
