@@ -13,6 +13,7 @@ const config = {
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
+  console.log("yes");
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
@@ -43,6 +44,10 @@ export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ promt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () =>
+  auth
+    .signInWithPopup(provider)
+    .then((whatever) => console.log(whatever))
+    .catch((error) => console.log(error));
 
 export default firebase;
